@@ -1,0 +1,10 @@
+# github.com/inconshreveable/mousetrap v1.0.0
+github.com/inconshreveable/mousetrap
+# github.com/spf13/cobra v0.0.5
+github.com/spf13/cobra
+# github.com/spf13/pflag v1.0.5
+github.com/spf13/pflag
+# k8s.io/apimachinery v0.0.0-20190612205821-1799e75a0719
+k8s.io/apimachinery/pkg/version
+# k8s.io/client-go v12.0.0+incompatible
+k8s.io/client-go/pkg/version

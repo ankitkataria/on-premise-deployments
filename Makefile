@@ -12,17 +12,12 @@ GOPATH := $(GOBASE)/vendor:$(GOBASE)
 GOBIN := $(GOBASE)/bin
 
 # Build
-build: client master
-
-client:
-	$(GOBUILD) -o $(GOBIN)/client ./cmd/client/ 
-
-master:
-	$(GOBUILD) -o $(GOBIN)/master ./cmd/master
+build:
+	$(GOBUILD) -mod vendor -o $(GOBIN)/tiger ./cmd/
 
 clean:
 	rm -rf ./bin
 
 fmt:
-	$(GOFMT) ./cmd/client ./cmd/master
+	$(GOFMT) ./cmd
 
