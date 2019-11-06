@@ -1,2 +1,3 @@
 bin/
-.contexts/minikube-dev.yml
+contexts/*-prod.yml
+
