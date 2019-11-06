@@ -6,80 +6,78 @@ import (
 
 type Config struct {
 	ApiVersion string `yaml:"apiVersion"`
-	Kind string `yaml:"kind"`
+	Kind       string `yaml:"kind"`
 
 	Clusters []Cluster `yaml:"clusters"`
-	Users []User `yaml:"users"`
+	Users    []User    `yaml:"users"`
 	Contexts []Context `yaml: "contexts"`
 }
 
 // Cluster configs
 type Cluster struct {
-	Name string			
-	ClusterConfig ClusterConfig `yaml:"cluster,omitempty"`
+	Name          string
+	ClusterConfig ClusterConfig `yaml:"cluster"`
 }
 
 type ClusterConfig struct {
 	CertificateAuthority string `yaml:"certificate-authority"`
-	Server string
+	Server               string
 }
 
 // User configs
 type User struct {
-	Name string `yaml:"name"`			
-	UserCred UserCred `yaml:"user,omitempty"`
+	Name     string   `yaml:"name"`
+	UserCred UserCred `yaml:"user"`
 }
 
 type UserCred struct {
 	ClientCertificate string `yaml:"client-certificate"`
-	ClientKey string `yaml:"client-key"`
+	ClientKey         string `yaml:"client-key"`
 }
 
 // Context configs
 type Context struct {
-	Name string
+	Name          string
 	ContextConfig ContextConfig `yaml:"context,omitempty"`
 }
 
 type ContextConfig struct {
 	ClusterName string `yaml:cluster`
-	NameSpace string
-	User string
+	NameSpace   string
+	User        string
 }
-
 
 func (c *Config) Create(users []string, clusters []string, contexts []string) {
 	c.ApiVersion = "v1"
 	c.Kind = "Config"
 
 	// Populating cluster, context and user objects
-	userConfigs := make([]User, len(users)) 
+	userConfigs := make([]User, len(users))
 	for i, user := range users {
-		config := User {
+		config := User{
 			Name: user,
 		}
 
 		userConfigs[i] = config
 	}
 
-	clusterConfigs := make([]Cluster, len(clusters)) 
-	for i, cluster := range clusters{
-		config := Cluster {
+	clusterConfigs := make([]Cluster, len(clusters))
+	for i, cluster := range clusters {
+		config := Cluster{
 			Name: cluster,
 		}
 
 		clusterConfigs[i] = config
 	}
 
-	contextConfigs := make([]Context, len(contexts)) 
+	contextConfigs := make([]Context, len(contexts))
 	for i, context := range contexts {
-		config := Context {
+		config := Context{
 			Name: context,
 		}
 
 		contextConfigs[i] = config
 	}
-
 
 	c.Users = userConfigs
 	c.Contexts = contextConfigs
