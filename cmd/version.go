@@ -1,16 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/spf13/cobra"
+	log "github.com/sirupsen/logrus"
 )
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Displays the version of the current build On-Premise-Deployment",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Initial Build")
+		log.Info("Initial Build")
 		os.Exit(0)
 	},
 }
