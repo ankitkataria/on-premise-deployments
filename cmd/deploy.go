@@ -20,7 +20,7 @@ func init() {
 	// Add deployment relation commands
 	deployCmd.AddCommand(deploy.CreateCmd)
 	deployCmd.AddCommand(deploy.UpdateCmd)
-	deployCmd.AddCommand(deploy.CheckCmd)
+	deployCmd.AddCommand(deploy.DeleteCmd)
 
 	deployCmd.PersistentFlags().StringP("cluster-config", "y", "./contexts/minikube-prod.yml", "Set k8s config file, default is contexts/minikube-prod.yml")
 }

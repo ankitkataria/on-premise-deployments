@@ -17,8 +17,6 @@ var CreateCmd = &cobra.Command{
 
 		configPath, image, replicas, deploymentName := GetClusterParams(cmd, args)
 
-		log.Info(configPath, image, replicas, deploymentName)
-
 		utils.CreateDeployment(configPath, deploymentName, image, replicas)
 
 		os.Exit(0)
@@ -37,8 +35,6 @@ func GetClusterParams(cmd *cobra.Command, args []string) (string, string, int32,
 	image, _ := cmd.Flags().GetString("image")
 	replicas, _ := cmd.Flags().GetInt32("replicas")
 	deploymentName := strings.Join(args, "-")
-
-	log.Info(configPath, image, replicas, deploymentName)
 
 	return configPath, image, replicas, deploymentName
 }

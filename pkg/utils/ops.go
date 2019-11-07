@@ -57,6 +57,17 @@ func UpdateReplicas(configPath string, deploymentName string, replicas int32) {
 	}
 }
 
+func DeleteDeployment(configPath string, deploymentName string) {
+	deploymentsClient := getDeploymentClient(configPath)
+	deletePolicy := metav1.DeletePropagationForeground
+
+	deploymentsClient.Delete(deploymentName, &metav1.DeleteOptions{
+		PropagationPolicy: &deletePolicy,
+	})
+
+	log.Info("[-] Deployment deleted deleted")
+}
+
 func getDeploymentClient(configPath string) typedv1.DeploymentInterface {
 	config, err := clientcmd.BuildConfigFromFlags("", configPath)
 	if err != nil {
