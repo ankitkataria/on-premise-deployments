@@ -34,6 +34,12 @@ func GetClusterParams(cmd *cobra.Command, args []string) (string, string, int32,
 	configPath, _ := cmd.Flags().GetString("cluster-config")
 	image, _ := cmd.Flags().GetString("image")
 	replicas, _ := cmd.Flags().GetInt32("replicas")
+
+	if len(args) == 0 {
+		log.Error("No deployment name specified")
+		os.Exit(1)
+	}
+
 	deploymentName := strings.Join(args, "-")
 
 	return configPath, image, replicas, deploymentName

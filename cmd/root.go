@@ -6,7 +6,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "tiger",
-	Short: "On premise deployments",
+	Short: "Tiger: On Premise Deployments",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
 	},

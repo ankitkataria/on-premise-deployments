@@ -17,6 +17,11 @@ var addCmd = &cobra.Command{
 	Long: `This command creates a new client kubernetes config. It expects the user to enter
 	the certificates and permissions for users to access the client's kubernetes cluster`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			log.Error("No client-name specified")
+			os.Exit(1)
+		}
+
 		clientName := strings.Join(args, "-")
 		f, err := os.Create("./contexts/" + clientName + "-prod.yml")
 		checkFileError(err)
@@ -46,7 +51,7 @@ func checkFileError(err error) {
 	if err != nil {
 		log.Error(err)
 		log.Error("Could not create new client")
-		os.Exit(0)
+		os.Exit(1)
 	}
 }
 

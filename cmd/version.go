@@ -9,7 +9,7 @@ import (
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Displays the version of the current build of On-Premise-Deployment",
+	Short: "Displays the version of the current Tiger build",
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Info("Initial Build")
 		os.Exit(0)
